@@ -2,7 +2,7 @@
 
 Lista de tarefas simples e básica que permite anotar as tarefas do dia e interagir indicando sua conclusão ou exclusão.
 
-👉 [ACESSAR]()
+👉 [ACESSAR](https://camilafbc.github.io/to-do-list/)
 
 ## Conceitos trabalhados:
 
