@@ -34,6 +34,7 @@ main {
 }
 
 .content {
+  width: 80vw;
   padding: 3rem;
   min-width: 250px;
   text-align: center;
@@ -55,6 +56,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   border: 1px solid black;
   border-radius: 1rem;
 }
@@ -113,7 +115,6 @@ li input[type=checkbox] {
 }
 li input[type=checkbox]:hover {
   scale: 1.1;
-  opacity: 0.6;
 }
 li input:checked {
   background-color: black;
@@ -130,6 +131,9 @@ li label {
 }
 
 @media (min-width: 600px) {
+  .content {
+    width: 70vw;
+  }
   .content h3 {
     font-size: 2.25rem;
   }
@@ -148,8 +152,14 @@ li label {
   }
 }
 @media (min-width: 800px) {
+  .content {
+    width: 60vw;
+  }
   .content h3 {
     font-size: 3rem;
+  }
+  .form-content form {
+    width: 90%;
   }
   .form-content button img {
     width: 26px;

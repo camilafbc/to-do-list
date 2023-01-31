@@ -38,6 +38,7 @@ main{
 }
 
 .content{
+    width: 80vw;
     padding: 3rem;
     min-width: 250px;
     text-align: center;
@@ -60,6 +61,7 @@ main{
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
         border: 1px solid black;
         border-radius: 1rem;
     }
@@ -129,7 +131,6 @@ li{
 
             &:hover{
                 scale: 1.1;
-                opacity:0.6;
             }
         }
 
@@ -156,6 +157,8 @@ li{
 
 @media (min-width: 600px){
     .content{
+        width: 70vw;
+
         h3{
             font-size: 2.25rem;
         }
@@ -190,12 +193,17 @@ li{
 
 @media (min-width: 800px){
     .content{
+        width: 60vw;
         h3{
             font-size: 3rem;
         }
     }
 
     .form-content{
+        form{
+            width: 90%;
+        }
+
         button{
             img{
                 width: 26px;
