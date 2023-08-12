@@ -3,6 +3,9 @@ const list = document.getElementById("list");
 const input_text = document.querySelector("input[name='task']");
 
 function handleAddToList(){
+
+    if(input_text.value == "") return
+
     let id = Math.floor(Math.random() * 10000);
 
     const input_check = document.createElement("input");
