@@ -1,33 +1,33 @@
 const button = document.getElementById("btn");
 const list = document.getElementById("list");
 const input_text = document.querySelector("input[name='task']");
-let tarefas = [];
+let to_do_list = [];
 let contador = 0;
 
 // inicialização: verifica se a chave está armazenada no localStorage e renderiza os elementos, caso estejam salvos
-const minhaTarefas = localStorage.getItem('minha-to-do-list')
-if(minhaTarefas){
-    const existe = JSON.parse(minhaTarefas)
-    existe.forEach((ex) => createTask(ex.texto, ex.check))
+const task_list = localStorage.getItem('to-do-list')
+if(task_list){
+    const tasks = JSON.parse(task_list)
+    tasks.forEach((task) => createTask(task.text, task.check))
 }
 
 // armazena a lista no localStorage
 function toLocalStorage(){
-    localStorage.setItem('minha-to-do-list', JSON.stringify(tarefas))
+    localStorage.setItem('to-do-list', JSON.stringify(to_do_list))
 }
 
 // cria os elementos da lista
-function createTask(entrada, estado){
+function createTask(text_task, checked_state){
 
     let id = contador++;
 
     const input_check = document.createElement("input");
     input_check.type = "checkbox";
     input_check.id = `check-task-${id}`;
-    input_check.checked = estado;
+    input_check.checked = checked_state;
 
     const task_text = document.createElement("label");
-    task_text.innerText = entrada;
+    task_text.innerText = text_task;
     task_text.htmlFor = `check-task-${id}`;
 
     const delete_btn = document.createElement("button");
@@ -43,14 +43,14 @@ function createTask(entrada, estado){
     list_task.id = id;
     list_task.append(input_check, task_text, edit_btn, delete_btn);
     list.appendChild(list_task);
-    if(estado){
-        list_task.classList.add("teste")
+    if(checked_state){
+        list_task.classList.add("checked_style")
     }
 
     delete_btn.addEventListener('click', (ev) => {
         const task_to_remove = ev.currentTarget.parentNode;
         // remove a tarefa do local storage
-        tarefas = tarefas.filter(tarefa => tarefa.id != task_to_remove.id)
+        to_do_list = to_do_list.filter(tarefa => tarefa.id != task_to_remove.id)
         toLocalStorage()
         // remove a tarefa da tela instantaneamente
         task_to_remove.remove();
@@ -58,10 +58,10 @@ function createTask(entrada, estado){
 
     input_check.addEventListener('change', (ev) => {
         const check = ev.currentTarget.parentNode;
-        const novoEstado = input_check.checked;
-        check.classList.toggle("teste");
+        const newCheckedState = input_check.checked;
+        check.classList.toggle("checked_style");
         // atualiza o novo estado do input na tarefa armazenada no localStorage
-        updateTask(novoEstado, id)
+        updateTask(newCheckedState, id)
     })
 
     edit_btn.addEventListener('click', (ev) => {
@@ -72,24 +72,24 @@ function createTask(entrada, estado){
         updateText(newText, id)
     })
 
-    tarefas.push({id: id, texto: entrada, check: estado})
+    to_do_list.push({id: id, text: text_task, check: checked_state})
     toLocalStorage()
 }
 
 // responsável por atualizar o estado do input na tarefa armazenada no localStorage
-function updateTask(estado, id){
-    const tarefaAAtualizar = tarefas.find(tarefa => tarefa.id == id)
-    if(tarefaAAtualizar){
-        tarefaAAtualizar.check = estado
+function updateTask(checked_state, id){
+    const taskToUpdate = to_do_list.find(tsk => tsk.id == id)
+    if(taskToUpdate){
+        taskToUpdate.check = checked_state
         toLocalStorage()
     }
 }
 
-// responsável por atualizar o novo texto da tarefa armazenada no localStorage
-function updateText(novoTexto, id){
-    const texto_a_atualizar = tarefas.find(tarefa => tarefa.id == id)
-    if(texto_a_atualizar){
-        texto_a_atualizar.texto = novoTexto
+// responsável por atualizar o novo text da tarefa armazenada no localStorage
+function updateText(newText, id){
+    const textToUpdate = to_do_list.find(tsk => tsk.id == id)
+    if(textToUpdate){
+        textToUpdate.text = newText
         toLocalStorage()
     }
 }
