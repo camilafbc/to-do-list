@@ -1,7 +1,7 @@
 # 📋 To-Do-List / Lista de Tarefas
 
 <div>
-  <img width="100%" src="" />
+  <img width="100%" src="https://github.com/camilafbc/to-do-list/blob/main/to-readme.gif?raw=true" />
 </div>
 
 Este é um projeto de To-Do List (lista de tarefas) construído com HTML, JavaScript e Sass. A aplicação permite a inserção de tarefas, edição, exclusão e marcação de conclusão. Os dados são armazenados no `localStorage` para preservar as alterações feitas pelo usuário, mesmo após a atualização da página.
